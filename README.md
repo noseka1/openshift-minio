@@ -1,1 +1,1 @@
-# openshift-minio
+# Deploy MinIO to OpenShift
