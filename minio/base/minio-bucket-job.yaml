@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: minio-bucket
+spec:
+  template:
+    metadata:
+      name: minio-bucket
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: mc
+        image: minio/mc:latest
+        env:
+        - name: MINIO_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-credentials
+              key: minio_access_key
+        - name: MINIO_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-credentials
+              key: minio_secret_key
+        command:
+        - /bin/sh
+        args:
+        - -c
+        - 'mc --config-dir=/config config host add minio http://minio:9000 $MINIO_ACCESS_KEY $MINIO_SECRET_KEY &&
+           mc --config-dir=/config mb --ignore-existing minio/mybucket &&
+           mc --config-dir=/config watch minio/mybucket'
+        volumeMounts:
+        - name: config
+          mountPath: "/config"
+      volumes:
+      - name: config
+        emptyDir: {}
