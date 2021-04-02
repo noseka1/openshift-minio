@@ -26,9 +26,13 @@ spec:
         - /bin/sh
         args:
         - -c
-        - 'mc --config-dir=/config config host add minio http://minio:9000 $MINIO_ACCESS_KEY $MINIO_SECRET_KEY &&
-           mc --config-dir=/config mb --ignore-existing minio/mybucket &&
-           mc --config-dir=/config watch minio/mybucket'
+        - |
+          set -e
+           mc --config-dir /config config host add minio http://minio:9000 $MINIO_ACCESS_KEY $MINIO_SECRET_KEY
+           for I in $(seq 1 9); do
+             mc --config-dir /config mb --ignore-existing minio/mybucket-$I
+           done
+           mc --config-dir /config watch minio/
         volumeMounts:
         - name: config
           mountPath: "/config"
