@@ -1,13 +1,17 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: minio-bucket
 spec:
+  selector:
+    matchLabels:
+      app: minio-bucket
   template:
     metadata:
-      name: minio-bucket
+      labels:
+        app: minio-bucket
     spec:
-      restartPolicy: OnFailure
+      restartPolicy: Always
       containers:
       - name: mc
         image: minio/mc:latest
