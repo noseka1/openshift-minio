@@ -8,7 +8,6 @@ resources:
 - minio-config-pvc.yaml
 - minio-credentials-secret.yaml
 - minio-deploy.yaml
-- minio-ns.yaml
 - minio-route.yaml
 - minio-storage-pvc.yaml
 - minio-svc.yaml
