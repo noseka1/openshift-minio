@@ -4,10 +4,11 @@ kind: Kustomization
 namespace: minio
 
 resources:
+- minio-api-route.yaml
 - minio-bucket-deploy.yaml
 - minio-config-pvc.yaml
-- minio-credentials-secret.yaml
+- minio-console-route.yaml
+- minio-server-credentials-secret.yaml
 - minio-deploy.yaml
-- minio-route.yaml
 - minio-storage-pvc.yaml
 - minio-svc.yaml
