@@ -4,7 +4,7 @@ metadata:
   name: minio-api
 spec:
   port:
-    targetPort: 8080
+    targetPort: 9000
   tls:
     termination: edge
     insecureEdgeTerminationPolicy: Redirect
