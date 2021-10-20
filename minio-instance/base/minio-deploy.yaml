@@ -18,6 +18,7 @@ spec:
         - server
         - /storage
         - --config-dir=/config
+        - --console-address :8080
         env:
         - name: MINIO_ROOT_USER
           valueFrom:
@@ -31,6 +32,7 @@ spec:
               key: minio_secret_key
         ports:
         - containerPort: 9000
+        - containerPort: 8080
         volumeMounts:
         - name: storage
           mountPath: /storage
