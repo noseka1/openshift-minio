@@ -8,7 +8,7 @@ resources:
 - minio-bucket-deploy.yaml
 - minio-config-pvc.yaml
 - minio-console-route.yaml
-- minio-credentials-secret.yaml
+- minio-server-credentials-secret.yaml
 - minio-deploy.yaml
 - minio-storage-pvc.yaml
 - minio-svc.yaml

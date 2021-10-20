@@ -19,12 +19,12 @@ spec:
         - name: MINIO_ACCESS_KEY
           valueFrom:
             secretKeyRef:
-              name: minio-credentials
+              name: minio-server-credentials
               key: minio_access_key
         - name: MINIO_SECRET_KEY
           valueFrom:
             secretKeyRef:
-              name: minio-credentials
+              name: minio-server-credentials
               key: minio_secret_key
         command:
         - /bin/sh
